@@ -5,20 +5,21 @@
             Default Title
         </title>
         <script>
-       $(function() {
-	// Get page title
-  	var pageTitle = $("title").text();
+          window.onload = function() {
 
-	// Change page title on blur
-	$(window).blur(function() {
-	  $("title").text("Don't forget to read this...");
-	});
+var pageTitle = document.title;
+var attentionMessage = 'Come Back!';
 
-	// Change page title back on focus
-	$(window).focus(function() {
-	  $("title").text(pageTitle);
-	});
+document.addEventListener('visibilitychange', function(e) {
+  var isPageActive = !document.hidden;
+
+  if(!isPageActive){
+    document.title = attentionMessage;
+  }else {
+    document.title = pageTitle;
+  }
 });
+};
             </script>
     </head>
     <body>
